@@ -153,7 +153,15 @@
       $_SESSION['user_id'] = $user->user_id;
       $_SESSION['user_email'] = $user->email;
       $_SESSION['user_name'] = $user->username;
-      redirect('pages');
+      $_SESSION['user_role'] = $user->role;
+      // var_dump($_SESSION['user_id']);
+      // die();
+      if($user->role=='admin'){
+        redirect('tags');
+      }else {
+        redirect('categories');
+      }
+      // redirect('Categories');
     }
 
     public function logout(){

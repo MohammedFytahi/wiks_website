@@ -27,10 +27,10 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/projets/index">Home</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/tags/index">Tags</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/categories/index">Category</a>
           </li>
         </ul>
         
