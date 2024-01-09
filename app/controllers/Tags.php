@@ -14,18 +14,55 @@ class Tags extends Controller
         $this->categoryModel = $this->model('Category'); // Assurez-vous que 'Category' est correctement orthographié
     }
 
+    // public function index()
+    // {
+    //     $categories = $this->categoryModel->getCategories();
+    //     $tags = $this->tagModel->getTags();
+    
+    //     $data = [
+    //         'tags' => $tags,
+    //         'categories' => $categories
+    //     ];
+    
+    //     $this->view('tags/index', $data);
+    // }
+
     public function index()
     {
-        $categories = $this->categoryModel->getCategories();
+        $totalCategories = $this->categoryModel->getTotalCategories();
         $tags = $this->tagModel->getTags();
-    
+        $totalTags = $this->tagModel->getTotalTags();
+
         $data = [
             'tags' => $tags,
-            'categories' => $categories
+            'totalTags' => $totalTags,
+            'totalCategories' => $totalCategories,
         ];
-    
-        $this->view('tags/index', $data);
+
+        $this->view('dashboard/dashboard', $data);
     }
+
+
+
+    public function index2()
+    {
+
+        $tags = $this->tagModel->getTags();
+        $totalTags = $this->tagModel->getTotalTags();
+        // $totalCategories = $this->categoryModel->getTotalCategories();
+
+        // var_dump($tags);
+
+        $data = [
+            'tags' => $tags,
+            'totalTags' => $totalTags,
+            // 'totalCategories' => $totalCategories,
+        ];
+
+        $this->view('tags/index', $data);
+        // $this->categoryModel = $this->model('Category');
+    }
+
 
     public function add()
     {
@@ -139,5 +176,7 @@ class Tags extends Controller
             redirect('tags');
         }
     }
+
+    
     
 }

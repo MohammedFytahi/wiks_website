@@ -35,7 +35,7 @@ class Wikis extends Controller
                 'category_id' => $_POST['category_id'],
                 'tags' => $_POST['tags'],
                 'categories' => $categories,
-                'tags' => $tags,
+                // 'tags' => $tags,
             ];
 
             // Call the model method to add the wiki with category and tags
@@ -84,7 +84,7 @@ class Wikis extends Controller
                 'category_id' => $_POST['category_id'],
                 'tags' => $_POST['tags'],
                 'categories' => $categories,
-                'tags' => $tags,
+                // 'tags' => $tags,
             ];
 
            

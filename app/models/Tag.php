@@ -100,5 +100,12 @@ class Tag
 
     return $results;
 }
+public function getTotalTags()
+    {
+        $this->db->query('SELECT COUNT(*) as total FROM tags');
+        $row = $this->db->single();
+        return $row->total;
+
+    }
 
 }

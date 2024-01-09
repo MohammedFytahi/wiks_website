@@ -3,6 +3,7 @@
 class Categories extends Controller
 {
     public $categoryModel;
+    public $tagModel;
 
     public function __construct()
     {
@@ -11,15 +12,46 @@ class Categories extends Controller
         }
 
         $this->categoryModel = $this->model('Category');
+        $this->tagModel = $this->model('Tag');
     }
+
+    // public function index()
+    // {
+    //     $categories = $this->categoryModel->getCategories();
+    //     $data = [
+    //         'categories' => $categories
+    //     ];
+    //     $this->view('category/index', $data);
+    // }
 
     public function index()
     {
         $categories = $this->categoryModel->getCategories();
+        $totalCategories = $this->categoryModel->getTotalCategories();
+        $totalTags =  $this->tagModel->getTotalTags();
         $data = [
-            'categories' => $categories
+            'categories' => $categories,
+            'totalCategories' => $totalCategories,
+            'totalTags'=> $totalTags,
         ];
-        $this->view('category/index', $data);
+
+
+        // $this->view('category/index', $data);
+        $this->view('dashboard/dashboard', $data);
+    }
+
+    public function index2()
+    {
+        $categories = $this->categoryModel->getCategories();
+        $totalCategories = $this->categoryModel->getTotalCategories();
+        $data = [
+            'categories' => $categories,
+            'totalCategories' => $totalCategories,
+        ];
+
+
+         $this->view('category/index', $data);
+
     }
 
     public function add()

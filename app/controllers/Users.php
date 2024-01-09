@@ -149,6 +149,20 @@
       }
     }
 
+    // public function createUserSession($user){
+    //   $_SESSION['user_id'] = $user->user_id;
+    //   $_SESSION['user_email'] = $user->email;
+    //   $_SESSION['user_name'] = $user->username;
+    //   $_SESSION['user_role'] = $user->role;
+    //   // var_dump($_SESSION['user_id']);
+    //   // die();
+    //   if($user->role=='admin'){
+    //     redirect('tags');
+    //   }else {
+    //     redirect('wikis');
+    //   }
+    //   // redirect('Categories');
+    // }
     public function createUserSession($user){
       $_SESSION['user_id'] = $user->user_id;
       $_SESSION['user_email'] = $user->email;
@@ -156,10 +170,15 @@
       $_SESSION['user_role'] = $user->role;
       // var_dump($_SESSION['user_id']);
       // die();
-      if($user->role=='admin'){
-        redirect('tags');
-      }else {
-        redirect('wikis');
+      if($user->role =='admin'){
+      redirect('categories/index');
+      // redirect('Tags/index');
+      // redirect("dashboard/dashboard");
+      }elseif($user->role =='user') {
+        // redirect('Tags/index');
+        $this->view('tags/index');
+      }else{
+        // redirect('Home');
       }
       // redirect('Categories');
     }
