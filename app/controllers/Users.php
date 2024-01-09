@@ -159,7 +159,7 @@
       if($user->role=='admin'){
         redirect('tags');
       }else {
-        redirect('categories');
+        redirect('wikis');
       }
       // redirect('Categories');
     }
