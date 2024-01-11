@@ -4,6 +4,7 @@ class Categories extends Controller
 {
     public $categoryModel;
     public $tagModel;
+    public $wikiModel;
 
     public function __construct()
     {
@@ -13,6 +14,7 @@ class Categories extends Controller
 
         $this->categoryModel = $this->model('Category');
         $this->tagModel = $this->model('Tag');
+        $this->wikiModel = $this->model('Wiki');
     }
 
     // public function index()
@@ -29,10 +31,12 @@ class Categories extends Controller
         $categories = $this->categoryModel->getCategories();
         $totalCategories = $this->categoryModel->getTotalCategories();
         $totalTags =  $this->tagModel->getTotalTags();
+        $totalWikis = $this->wikiModel->getTotalWikisCount();
         $data = [
             'categories' => $categories,
             'totalCategories' => $totalCategories,
             'totalTags'=> $totalTags,
+            'totalWikis'=>$totalWikis,
         ];
 
 

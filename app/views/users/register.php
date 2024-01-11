@@ -34,4 +34,55 @@
       </div>
     </div>
   </div>
+
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (event) {
+      let isValid = true;
+
+      
+      const nameRegex = /^[A-Za-z\s]+$/;
+
+      const usernameInput = document.querySelector('input[name="username"]');
+      if (!nameRegex.test(usernameInput.value)) {
+        displayError(usernameInput, "Le nom ne peut contenir que des lettres et des espaces");
+        isValid = false;
+      }
+
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      const emailInput = document.querySelector('input[name="email"]');
+      if (!emailRegex.test(emailInput.value)) {
+        displayError(emailInput, "Veuillez entrer une adresse e-mail valide");
+        isValid = false;
+      }
+
+     
+      const passwordRegex = /^.{6,}$/;
+
+      const passwordInput = document.querySelector('input[name="password"]');
+      if (!passwordRegex.test(passwordInput.value)) {
+        displayError(passwordInput, "Le mot de passe doit contenir au moins 6 caractères");
+        isValid = false;
+      }
+
+      if (!isValid) {
+        event.preventDefault(); 
+      }
+    });
+
+    function displayError(input, message) {
+      const formGroup = input.closest(".form-group");
+      const errorSpan = formGroup.querySelector(".invalid-feedback");
+
+      input.classList.add("is-invalid");
+      errorSpan.textContent = message;
+    }
+  });
+</script>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>
