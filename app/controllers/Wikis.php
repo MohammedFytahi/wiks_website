@@ -94,9 +94,12 @@ class Wikis extends Controller
             $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
 
             // Assurez-vous que $_POST['tags'] existe et est une chaîne avant d'utiliser explode
-            $tags = isset($_POST['tags']) ? (is_array($_POST['tags']) ? $_POST['tags'] : explode(',', $_POST['tags'])) : [];
+            // $tags = isset($_POST['tags']) ? (is_array($_POST['tags']) ? $_POST['tags'] : explode(',', $_POST['tags'])) : [];
 
+            $tags = isset($_POST['selectedTagsInput']) ? json_decode($_POST['selectedTagsInput'], true) : [];
 
+            // var_dump($tags);
+            // die();
             // Traiter les données du formulaire (ex: enregistrer dans la base de données)...
             $data = [
                 'title' => $title,
@@ -186,7 +189,7 @@ class Wikis extends Controller
 
             if ($this->wikiModel->updateWiki($data)) {
                 flash('wiki_message', 'Wiki Updated');
-                redirect('wikis');
+                redirect('wikis/index2');
             } else {
                 die('Something went wrong');
             }
@@ -263,18 +266,18 @@ class Wikis extends Controller
 
 public function search()
     {
-        // Récupérer le terme de recherche depuis la requête AJAX
-        $searchTerm = $_POST['searchTerm'];
-        error_log('Search Term: ' . $searchTerm);
-       
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-        // Appeler votre modèle pour effectuer la recherche et obtenir les résultats
-        $searchResults = $this->wikiModel->searchWikis($searchTerm);
+            // Call a method in your model to perform the search
+            $searchResults = $this->wikiModel->searchWikis($searchTerm);
 
-        // Charger une vue partielle avec les résultats de la recherche
-        $data = [
-            'wikis' => $searchResults,
-        ];
-        $this->view('wikis/search', $data);
+            // Return the results in JSON format
+            header('Content-Type: application/json');
+            echo json_encode($searchResults);
+
+            exit;
+        }
+
     }
 }

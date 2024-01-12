@@ -131,17 +131,7 @@
 
                     </div>
 
-                    <!-- Charts and Graphs Section
-                <div class="mt-8"> -->
-                    <!-- Entity Distribution Chart -->
-                    <!-- <div class="bg-white p-8 rounded-md shadow-md">
-                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Entity Distribution</h3> -->
-                    <!-- Include your chart or graph library here -->
-                    <!-- <div class="w-full h-48 bg-gray-200"></div>
-                    </div>
-                </div> -->
 
-                    <!-- Recent Activities Section -->
                     <div class="mt-8">
                         <h3 class="text-2xl font-semibold mb-4 text-gray-800">Recent Activities</h3>
                         <!-- Include a more interactive list or timeline of recent activities here -->
