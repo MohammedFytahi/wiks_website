@@ -21,14 +21,14 @@
 
     <body class="font-sans bg-gray-100">
 
-        <!-- Admin Dashboard Section -->
+
         <section class="flex h-screen">
 
-            <!-- Sidebar Section -->
+
             <aside class="w-1/4 bg-indigo-800 text-white p-8" style="position: sticky; top: 0; height: 100vh;">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-4xl font-extrabold text-gray-800">
-                    <?php echo $_SESSION['user_name']; ?>
+                        <?php echo $_SESSION['user_name']; ?>
                     </h2>
 
                 </div>
@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo URLROOT; ?>/wikis/index2"
+                            <a href="<?php echo URLROOT; ?>/wikis/index1"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
                                 <!-- Utilisation de couleurs Tailwind -->
                                 <span class="mr-2">📚</span>
@@ -102,12 +102,14 @@
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                    <?php if (isset($data['totalWikis'])) : ?>
-                <div class="bg-blue-500 p-6 rounded-md shadow-md text-white">
-                    <h3 class="text-lg font-semibold mb-4">Total Wikis</h3>
-                    <p class="text-3xl font-bold"><?php echo $data['totalWikis']; ?></p>
-                </div>
-                <?php endif; ?>
+                        <?php if (isset($data['totalWikis'])): ?>
+                            <div class="bg-blue-500 p-6 rounded-md shadow-md text-white">
+                                <h3 class="text-lg font-semibold mb-4">Total Wikis</h3>
+                                <p class="text-3xl font-bold">
+                                    <?php echo $data['totalWikis']; ?>
+                                </p>
+                            </div>
+                        <?php endif; ?>
 
                         <?php if (isset($data['totalTags'])): ?>
                             <div class="bg-green-300 p-6 rounded-md shadow-md text-white">

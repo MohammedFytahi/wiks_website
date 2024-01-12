@@ -37,6 +37,19 @@ class Wikis extends Controller
 
     }
 
+    public function index1(){
+
+        $wikis = $this->wikiModel->getWikis();
+        $data = [
+            'wikis' => $wikis,
+        ];
+
+
+        // $this->view('category/index', $data);
+        $this->view('wikis/admin', $data);
+
+    }
+
     public function index2(){
 
         $wikis = $this->wikiModel->getWikis();
@@ -48,6 +61,22 @@ class Wikis extends Controller
         // $this->view('category/index', $data);
         $this->view('wikis/index', $data);
 
+    }
+
+    public function show($id) {
+        $wiki = $this->wikiModel->getWikiById($id);
+
+        if (!$wiki) {
+            
+            redirect('pages/error');
+        }
+
+        $data = [
+            'wiki' => $wiki,
+          
+        ];
+
+        $this->view('wikis/show', $data);
     }
 
 
@@ -79,7 +108,7 @@ class Wikis extends Controller
 
             if ($this->wikiModel->addWiki($data)) {
                 flash('wiki_message', 'Wiki ajouté avec succès');
-                redirect('wikis');
+                redirect('wikis/index2');
             } else {
                 die('Quelque chose s\'est mal passé');
             }
@@ -210,9 +239,42 @@ class Wikis extends Controller
         if ($this->wikiModel->archiveWiki($id)) {
             // Redirect or show success message
             flash('wiki_message', 'Wiki Archived');
-            redirect('wikis/index2');
+            redirect('wikis/index1');
         } else {
             die('Something went wrong');
         }
+    }
+
+
+    public function userWikis()
+{
+   
+    $userWikis = $this->wikiModel->getWikisByUserId($_SESSION['user_id']);
+
+   
+    $data = [
+        'userWikis' => $userWikis,
+    ];
+
+   
+    $this->view('wikis/userWikis', $data);
+}
+
+
+public function search()
+    {
+        // Récupérer le terme de recherche depuis la requête AJAX
+        $searchTerm = $_POST['searchTerm'];
+        error_log('Search Term: ' . $searchTerm);
+       
+
+        // Appeler votre modèle pour effectuer la recherche et obtenir les résultats
+        $searchResults = $this->wikiModel->searchWikis($searchTerm);
+
+        // Charger une vue partielle avec les résultats de la recherche
+        $data = [
+            'wikis' => $searchResults,
+        ];
+        $this->view('wikis/search', $data);
     }
 }

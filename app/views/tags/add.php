@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<a href="<?php echo URLROOT; ?>/tags/index" class="bg-red-500 text-white px-4 py-2 mt-10 inline-flex items-center"><i class="fa fa-backward mr-2"></i> Back</a>
+<a href="<?php echo URLROOT; ?>/tags/index2" class="bg-red-500 text-white px-4 py-2 mt-10 inline-flex items-center"><i class="fa fa-backward mr-2"></i> Back</a>
 
 <div class="bg-white mt-5 p-5 rounded-md shadow-md">
     <h2 class="text-3xl font-bold mb-4">ADD Tags</h2>

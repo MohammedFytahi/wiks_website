@@ -2,6 +2,7 @@
 class Wiki
 {
     private $db;
+    public $author_name; 
 
     public function __construct()
     {
@@ -133,26 +134,26 @@ public function addWiki($data) {
 
     public function getWikiById($id)
     {
-        $this->db->query("SELECT wikis.*, categories.category_name, GROUP_CONCAT(tags.tag_id) AS tag_ids
-                     FROM wikis 
-                     LEFT JOIN categories ON wikis.category_id = categories.category_id
-                    
-                     LEFT JOIN tags ON wikis.category_id = tags.category_id
-                     WHERE wikis.wiki_id = :id
-                     GROUP BY wikis.wiki_id");
-
+        $this->db->query("SELECT wikis.*, categories.category_name, GROUP_CONCAT(tags.tag_id) AS tag_ids, users.user_id AS author_id, users.username AS author_name
+                         FROM wikis 
+                         LEFT JOIN categories ON wikis.category_id = categories.category_id
+                         LEFT JOIN users ON wikis.author_id = users.user_id
+                         LEFT JOIN tags ON wikis.category_id = tags.category_id
+                         WHERE wikis.wiki_id = :id
+                         GROUP BY wikis.wiki_id");
+    
         $this->db->bind(':id', $id);
         $row = $this->db->single();
-
-
+    
         if (property_exists($row, 'tag_ids')) {
             $row->tags = explode(',', $row->tag_ids);
         } else {
             $row->tags = [];
         }
-
+    
         return $row;
     }
+    
 
     public function getCategories()
     {
@@ -218,6 +219,23 @@ public function addWiki($data) {
     {
         $this->db->query('SELECT COUNT(*) AS total FROM wikis');
         return $this->db->single()->total;
+    }
+
+    
+public function getWikisByUserId($userId)
+{
+    $this->db->query("SELECT * FROM wikis WHERE author_id = :user_id");
+    $this->db->bind(':user_id', $userId);
+
+    return $this->db->resultSet();
+}
+
+public function searchWikis($searchTerm)
+    {
+        $this->db->query("SELECT * FROM wikis WHERE title LIKE :searchTerm OR content LIKE :searchTerm");
+        $this->db->bind(':searchTerm', "%$searchTerm%");
+        error_log('Query: ' . $this->db->getQuery());
+        return $this->db->resultSet();
     }
 
 }

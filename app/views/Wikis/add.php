@@ -22,6 +22,8 @@
                 <option value="<?php echo $category->category_id; ?>"><?php echo $category->category_name; ?></option>
             <?php endforeach; ?>
         </select>
+
+        
     </div>
     <div class="mb-3">
         <label for="tags" class="form-label">Tags</label>

@@ -160,9 +160,9 @@
       // var_dump($_SESSION['user_id']);
       // die();
       if($user->role=='admin'){
-        redirect('tags');
-      }else {
         redirect('wikis');
+      }else {
+        redirect('wikis/index2');
       }
       // redirect('Categories');
     }
