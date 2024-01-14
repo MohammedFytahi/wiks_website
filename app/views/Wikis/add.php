@@ -1,43 +1,48 @@
-
-
-
-
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php flash('wiki_message');?>
 
 <div class="flex items-center justify-center my-8">
-    <h1 class="text-4xl font-extrabold text-green-600">Create a New Wiki</h1>
+    <h1 class="text-2xl font-extrabold text-blue-500">Create a New Wiki</h1>
 </div>
 
-<form action="<?php echo URLROOT; ?>/wikis/add" method="post" class="max-w-md mx-auto mb-10 bg-gray-100 p-8 rounded-lg shadow-md">
+<form action="<?php echo URLROOT; ?>/wikis/add" method="post" class="max-w-md mx-auto mb-10 bg-white p-8 rounded-lg shadow-md">
+
     <div class="mb-6">
         <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">Title</label>
         <input type="text" name="title" class="form-input w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500">
+        <?php echo flash('title_err'); ?>
     </div>
+
     <div class="mb-6">
         <label for="content" class="block text-sm font-semibold text-gray-700 mb-2">Content</label>
         <textarea name="content" class="form-input w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500"></textarea>
+        <?php echo flash('content_err'); ?>
     </div>
   
-  
     <div class="mb-6">
-        <label for="category" class=" block text-sm font-semibold text-gray-700 mb-2 form-label">Category</label>
-        <select name="category_id" id="categoryId" class=" form-select w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500 form-select">
+        <label for="category" class="block text-sm font-semibold text-gray-700 mb-2">Category</label>
+        <select name="category_id" id="categoryId" class="form-select w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500">
             <?php foreach ($data['categories'] as $category): ?>
                 <option value="<?php echo $category->category_id; ?>"><?php echo $category->category_name; ?></option>
             <?php endforeach; ?>
         </select>
+        <?php echo flash('category_err'); ?>
     </div>
-    <div class="mb-3">
-        <label for="selectedTagsInput" class="form-label">Tags</label>
-        <input type="hidden" id="selectedTagsInput" name="selectedTagsInput" class=" form-control">
 
-        <div id="tagsContainer" class=" "></div>
+    <div class="mb-3">
+        <label for="selectedTagsInput" class="block text-sm font-semibold text-gray-700 mb-2">Tags</label>
+        <input type="hidden" id="selectedTagsInput" name="selectedTagsInput" class="form-input">
+        <?php echo flash('tags_err'); ?>
+
+        <div id="tagsContainer" class="flex flex-wrap gap-2"></div>
     </div>
-    <div class="pt-1 mb-3 d-flex mt-2 justify-content-end">
-        <button class="btn  btn-md btn-block bg-green-500  text-white " type="submit" name="submit">Valider</button>
+
+    <div class="flex justify-end">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit" name="submit">Valider</button>
     </div>
+
 </form>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

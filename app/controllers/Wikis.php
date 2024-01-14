@@ -23,12 +23,14 @@ class Wikis extends Controller
         $totalCategories = $this->CategoryModel->getTotalCategories();
         $totalTags =  $this->tagModel->getTotalTags();
         $totalWikis = $this->wikiModel->getTotalWikisCount();
+        $lastWikiAuthor = $this->wikiModel->getLastWikiAuthor();
 
         $data = [
             'categories' => $categories,
             'totalCategories' => $totalCategories,
             'totalTags'=> $totalTags,
             'totalWikis' => $totalWikis,
+            'lastWikiAuthor' => $lastWikiAuthor,
 
         ];
 
@@ -40,13 +42,16 @@ class Wikis extends Controller
     public function index1(){
 
         $wikis = $this->wikiModel->getWikis();
+       
         $data = [
             'wikis' => $wikis,
+            
         ];
 
 
         // $this->view('category/index', $data);
         $this->view('wikis/admin', $data);
+        
 
     }
 
@@ -80,69 +85,102 @@ class Wikis extends Controller
     }
 
 
-
     public function add()
     {
-        // var_dump($_SESSION['user_id']);
-        
-        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize and validate input
             $title = htmlspecialchars(trim($_POST['title']));
             $content = htmlspecialchars(trim($_POST['content']));
             $category_id = $_POST['category_id'];
             $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
-
-            // Assurez-vous que $_POST['tags'] existe et est une chaîne avant d'utiliser explode
-            // $tags = isset($_POST['tags']) ? (is_array($_POST['tags']) ? $_POST['tags'] : explode(',', $_POST['tags'])) : [];
-
+            
+            // Initialize error messages
+            $title_err = '';
+            $content_err = '';
+            $category_err = '';
+            $tags_err = '';
+    
+            // Validate title
+            if (empty($title)) {
+                $title_err = 'Le titre est requis';
+            }
+    
+            // Validate content
+            if (empty($content)) {
+                $content_err = 'Le contenu est requis';
+            }
+    
+            // Validate category_id (you may want to perform further validation if needed)
+            if (empty($category_id)) {
+                $category_err = 'La catégorie est requise';
+            }
+    
+            // Validate tags
             $tags = isset($_POST['selectedTagsInput']) ? json_decode($_POST['selectedTagsInput'], true) : [];
-
-            // var_dump($tags);
-            // die();
-            // Traiter les données du formulaire (ex: enregistrer dans la base de données)...
-            $data = [
-                'title' => $title,
-                'content' => $content,
-                'category_id' => $category_id,
-                'author_id'=> $user_id,
-                'tags' => $tags,
-            ];
-
-            if ($this->wikiModel->addWiki($data)) {
-                flash('wiki_message', 'Wiki ajouté avec succès');
-                redirect('wikis/index2');
+            if (empty($tags)) {
+                $tags_err = 'Au moins un tag est requis';
+            }
+    
+            // Check if any error messages are set
+            if (empty($title_err) && empty($content_err) && empty($category_err) && empty($tags_err)) {
+                // Process form data if validation passes
+                $data = [
+                    'title' => $title,
+                    'content' => $content,
+                    'category_id' => $category_id,
+                    'author_id' => $user_id,
+                    'tags' => $tags,
+                ];
+    
+                // Check if both title and content are non-empty
+                if (!empty($data['title']) && !empty($data['content'])) {
+                    if ($this->wikiModel->addWiki($data)) {
+                        flash('wiki_message', 'Wiki ajouté avec succès', 'alert alert-success');
+                        redirect('wikis/index2');
+                    } else {
+                        flash('wiki_message', 'Quelque chose s\'est mal passé', 'alert alert-danger');
+                        redirect('wikis/add');
+                    }
+                } else {
+                    flash('wiki_message', 'Le titre et le contenu ne peuvent pas être vides', 'alert alert-danger');
+                    redirect('wikis/add');
+                }
             } else {
-                die('Quelque chose s\'est mal passé');
+                // Set flash messages for each error
+                flash('title_err', $title_err, 'alert alert-danger');
+                flash('content_err', $content_err, 'alert alert-danger');
+                flash('category_err', $category_err, 'alert alert-danger');
+                flash('tags_err', $tags_err, 'alert alert-danger');
+                redirect('wikis/add');
             }
         }
-
-        // Charger la vue avec les données nécessaires (y compris la liste des tags)
+    
+        // Load the view with the necessary data (including the list of tags and error messages)
         $wikis = $this->wikiModel->getWikis();
-
+    
         // Initialize CategoryModel before using it
         $this->CategoryModel = $this->model('Category');
         $categories = $this->CategoryModel->getCategories();
-
-        $this->tagModel = $this->model('tag');
-
+    
+        $this->tagModel = $this->model('Tag'); // Make sure the model name is correct
+    
         $categoryTags = [];
         foreach ($categories as $category) {
             $tags = $this->tagModel->getTagsByCategory($category->category_id);
             $categoryTags[$category->category_id] = $tags;
         }
-
+    
         $data = [
             'categories' => $categories,
             'tagsList' => $this->wikiModel->getTags(), // Assuming you want to get tags from wikiModel
             'categoryTags' => $categoryTags,
             'wikis' => $wikis,
         ];
-
+    
         $this->view('wikis/add', $data);
-        echo "<script> console.log(" . json_encode($data) . ")</script>";
     }
-
+    
+    
 
 
     public function statistics()

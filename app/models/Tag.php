@@ -51,20 +51,28 @@ class Tag
         }
     }
 
+
     public function updateTag($data)
     {
-        $this->db->query('UPDATE tags SET tag_name = :tag_name, category_id = :category_id WHERE tag_id = :id');
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':tag_name', $data['tag_name']);
-        $this->db->bind(':category_id', $data['category_id']);
-
-        if ($this->db->execute()) {
-            return true;
-        } else {
+        try {
+            $this->db->query('UPDATE tags SET tag_name = :tag_name WHERE tag_id = :id');
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':tag_name', $data['tag_name']);
+            // $this->db->bind(':category_id', $data['category_id']);
+    
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            // Output the specific error message for debugging
+            echo 'Error updating tag: ' . $e->getMessage();
             return false;
         }
     }
-
+    
+    
     public function getTagById($id)
     {
         $this->db->query('SELECT * FROM tags WHERE tag_id = :id');
@@ -117,5 +125,7 @@ public function getTotalTags()
 
     return ($row) ? true : false;
 }
+
+
 
 }

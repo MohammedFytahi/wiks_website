@@ -15,6 +15,8 @@
     <title>
         <?php echo SITENAME; ?>
     </title>
+
+    
 </head>
 
 <body>
@@ -31,7 +33,7 @@
         <i class="fa fa-bars"></i>
     </button>
 </div>
-            <aside class="w-1/4 bg-indigo-800 text-white p-8" style="position: fixed; top: 0; height: 100vh;">
+            <aside class="w-1/4 bg-indigo-800 text-white p-8 hidden lg:block" style="position: fixed; top: 0; height: 100vh;">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-4xl font-extrabold text-gray-800">
                         <?php echo $_SESSION['user_name']; ?>
@@ -91,14 +93,47 @@
                     </ul>
                 </nav>
             </aside>
+            <nav aria-label="alternative nav" class="md:hidden">
+            <div class="bg-gray-800 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
 
-            <!-- Main Content Section -->
-            <div class="w-3/4 p-8  rounded-md shadow-md"> <!-- Utilisation de couleurs Tailwind -->
+                <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
+                    <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/wikis/index" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block"> Dashboard Stats</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/wikis/index1"class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                                <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block"> Manage Wikis</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                             <a href="<?php echo URLROOT; ?>/categories/index2"class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                                <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block"> Manage Categories</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                        <a href="<?php echo URLROOT; ?>/tags/index2" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
+                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Manage Tags</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/users/logout" class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500">
+                                <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-                <!-- Main Content Section -->
 
-                <!-- Dashboard Section -->
-                <section class="container ml-80 my-8">
+            </div>
+        </nav>
+
+          
+            <section class="container lg:ml-80 my-8 max-w-md:mx-auto ">
+
+            <?php flash('tag_message'); ?>
                 <div class="row mb-3">
                                 <div class="col-md-6 ">
                                     <h1 class="text-2xl font-semibold">Tags</h1>
@@ -156,14 +191,16 @@
                                         <?php echo $tag->categoryName; ?>
                                     </span>
                                     <div class="flex flex-col mt-4 md:mt-6">
-                                        <form class="flex items-center"
-                                            action="<?php echo URLROOT; ?>/tags/edit/<?php echo $tag->tagId; ?>"
-                                            method="post">
-                                            <input type="text" name="tag_name"
-                                                class="form-input border border-gray-300 rounded-md"
-                                                value="<?php echo $tag->tagName; ?>">
-                                            <button type="submit" class="btn btn-success ml-2">Enregistrer</button>
-                                        </form>
+                                    <form class="flex items-center" action="<?php echo URLROOT; ?>/tags/edit/<?php echo $tag->tagId; ?>" method="post">
+    <input type="text" name="tag_name" class="form-input border border-gray-300 rounded-md" value="<?php echo $tag->tagName; ?>">
+    <button type="submit" class="btn btn-success ml-2">Enregistrer</button>
+
+    <!-- Display error message if it exists -->
+    <?php if (isset($data['title_err']) && !empty($data['title_err'])): ?>
+        <span class="text-red-500"><?php echo $data['title_err']; ?></span>
+    <?php endif; ?>
+</form>
+
                                         <form class="flex items-center"
                                             action="<?php echo URLROOT; ?>/tags/delete/<?php echo $tag->tagId; ?>"
                                             method="post">

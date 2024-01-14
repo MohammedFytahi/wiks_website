@@ -25,7 +25,7 @@
         <section class="flex h-screen">
 
 
-            <aside class="w-1/4 bg-indigo-800 text-white p-8" style="position: sticky; top: 0; height: 100vh;">
+            <aside class="w-1/4 bg-indigo-800 text-white p-8 hidden lg:block" style="position: sticky; top: 0; height: 100vh;">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-4xl font-extrabold text-gray-800">
                         <?php echo $_SESSION['user_name']; ?>
@@ -75,13 +75,44 @@
                     </ul>
                 </nav>
             </aside>
+            <nav aria-label="alternative nav" class="md:hidden">
+            <div class="bg-gray-800 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
 
-            <!-- Main Content Section -->
-            <div class="w-3/4 p-8 bg-gray-200 rounded-md shadow-md"> <!-- Utilisation de couleurs Tailwind -->
+                <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
+                    <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/wikis/index" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block"> Dashboard Stats</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/wikis/index1"class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                                <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block"> Manage Wikis</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                             <a href="<?php echo URLROOT; ?>/categories/index2"class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                                <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block"> Manage Categories</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                        <a href="<?php echo URLROOT; ?>/tags/index2" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
+                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Manage Tags</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/users/logout" class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500">
+                                <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-                <!-- Main Content Section -->
 
-                <!-- Dashboard Section -->
+            </div>
+        </nav>
+
+           
                 <section class="container mx-auto my-8">
 
                     <!-- Header Section -->
@@ -110,6 +141,7 @@
                                 </p>
                             </div>
                         <?php endif; ?>
+                        
 
                         <?php if (isset($data['totalTags'])): ?>
                             <div class="bg-green-300 p-6 rounded-md shadow-md text-white">
@@ -138,7 +170,7 @@
                         <div class="bg-white p-6 rounded-md shadow-md">
                             <ul class="space-y-4">
                                 <li>
-                                    <p class="text-gray-600">User John Doe created a new wiki.</p>
+                                    <p class="text-gray-600">Last wiki added by :  <?php echo $data['lastWikiAuthor']; ?></p>
                                     <span class="text-xs text-gray-400">2 hours ago</span>
                                 </li>
                                 <li>

@@ -22,16 +22,18 @@
     <!-- Admin Dashboard Section -->
     <section class="flex h-screen">
 
-        <!-- Sidebar Section -->
-        <aside class="w-1/4 bg-indigo-800 text-white p-8 " style="position: sticky; top: 0; height: 100vh; ">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-4xl font-extrabold text-gray-800">
-                    <?php echo $_SESSION['user_name']; ?>
-                </h2>
-            </div>
-            <nav>
-                <ul class="space-y-4 ">
-                <li>
+    <aside class="w-1/4 bg-indigo-800 text-white p-8 hidden lg:block" style="position: fixed; top: 0; height: 100vh;">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-4xl font-extrabold text-gray-800">
+                        <?php echo $_SESSION['user_name']; ?>
+                    </h2>
+
+                </div>
+                <nav>
+                    <ul class="space-y-4 ">
+
+
+                        <li>
                             <a href="<?php echo URLROOT; ?>/wikis/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
                                 <!-- Utilisation de couleurs Tailwind -->
@@ -44,10 +46,10 @@
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
                                 <!-- Utilisation de couleurs Tailwind -->
                                 <span class="mr-2">📚</span>
-                               Mes wikis
+                                Mes wikis
                             </a>
                         </li>
-                       <li>
+                        <li>
                             <a href="<?php echo URLROOT; ?>/wikis/add"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
                                 <span class="mr-2">➕</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
@@ -61,17 +63,43 @@
                                 Logout
                             </a>
                         </li>
-                </ul>
-            </nav>
-        </aside>
 
-        <!-- Main Content Section -->
-        <div class="w-3/4 p-8  rounded-md shadow-md"> <!-- Utilisation de couleurs Tailwind -->
 
-            <!-- Main Content Section -->
+                    </ul>
+                </nav>
+            </aside>
+            <nav aria-label="alternative nav" class="md:hidden">
+            <div class="bg-gray-800 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
 
-            <!-- Dashboard Section -->
-            <section class="container mx-auto my-8">
+                <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
+                    <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/wikis/index2" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Home</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/wikis/userWikis" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                                <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block"> Mes wikis</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/wikis/add" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
+                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Add wiki</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="<?php echo URLROOT; ?>/users/logout" class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500">
+                                <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </nav>
+            <section class="container lg:ml-80 my-8 max-w-md:mx-auto overflow-x-hidden">
 
 <div class="flex flex-row flex-wrap gap-20 mx-auto bg-gray-200">
     <?php foreach ($data['userWikis'] as $wiki): ?>
@@ -129,7 +157,7 @@
 
 
 
-        </div>
+        
     </section>
 
 </body>
