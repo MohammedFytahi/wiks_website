@@ -27,11 +27,9 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/tags/index">Tags</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/index">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/categories/index">Category</a>
-          </li>
+         
         </ul>
         
         <ul class="navbar-nav ml-auto">

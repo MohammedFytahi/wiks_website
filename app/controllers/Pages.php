@@ -1,22 +1,24 @@
 <?php
-  class Pages extends Controller {
-    public function __construct(){
-     
-    }
-    
-    public function index()
-    {
-        // Fetch tags or data from your model as needed
-        $tagsModel = $this->model('Tag');
-        $tags = $tagsModel->getTags();
 
+  
+    class Pages extends Controller {
+      public function __construct(){
+  
+      }
+  
+      public function index(){
+        $wikiModel = $this->model('Wiki');
+  
+        $wikis = $wikiModel->getWikis();
         $data = [
-            'tags' => $tags,
-            // Add other data as needed
+            'wikis' => $wikis,
         ];
-
-        $this->view('pages/index', $data);
+  
+  
+        $this->view('wikis/visiteur', $data);
+  
     }
+  
 
     public function about(){
       $data = [

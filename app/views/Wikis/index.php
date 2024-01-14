@@ -21,7 +21,6 @@
     </title>
 </head>
 
-<body>
 
 
 
@@ -35,7 +34,8 @@
 
 
             <!-- Sidebar Section -->
-            <aside class="w-1/4 bg-indigo-800 text-white p-8 hidden lg:block" style="position: fixed; top: 0; height: 100vh;">
+            <aside class="w-1/4 bg-indigo-800 text-white p-8 hidden lg:block"
+                style="position: fixed; top: 0; height: 100vh;">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-4xl font-extrabold text-gray-800">
                         <?php echo $_SESSION['user_name']; ?>
@@ -82,36 +82,49 @@
                 </nav>
             </aside>
             <nav aria-label="alternative nav" class="md:hidden">
-            <div class="bg-gray-800 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
+                <div
+                    class="bg-gray-800 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
 
-                <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
-                    <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
-                        <li class="mr-3 flex-1">
-                            <a href="<?php echo URLROOT; ?>/wikis/index2" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
-                                <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Home</span>
-                            </a>
-                        </li>
-                        <li class="mr-3 flex-1">
-                            <a href="<?php echo URLROOT; ?>/wikis/userWikis" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
-                                <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block"> Mes wikis</span>
-                            </a>
-                        </li>
-                        <li class="mr-3 flex-1">
-                            <a href="<?php echo URLROOT; ?>/wikis/add" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
-                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Add wiki</span>
-                            </a>
-                        </li>
-                        <li class="mr-3 flex-1">
-                            <a href="<?php echo URLROOT; ?>/users/logout" class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500">
-                                <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">logout</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <div
+                        class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
+                        <ul
+                            class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
+                            <li class="mr-3 flex-1">
+                                <a href="<?php echo URLROOT; ?>/wikis/index2"
+                                    class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                    <i class="fas fa-tasks pr-0 md:pr-3"></i><span
+                                        class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Home</span>
+                                </a>
+                            </li>
+                            <li class="mr-3 flex-1">
+                                <a href="<?php echo URLROOT; ?>/wikis/userWikis"
+                                    class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                                    <i class="fa fa-envelope pr-0 md:pr-3"></i><span
+                                        class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">
+                                        Mes wikis</span>
+                                </a>
+                            </li>
+                            <li class="mr-3 flex-1">
+                                <a href="<?php echo URLROOT; ?>/wikis/add"
+                                    class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
+                                    <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span
+                                        class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Add
+                                        wiki</span>
+                                </a>
+                            </li>
+                            <li class="mr-3 flex-1">
+                                <a href="<?php echo URLROOT; ?>/users/logout"
+                                    class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500">
+                                    <i class="fa fa-wallet pr-0 md:pr-3"></i><span
+                                        class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
                 </div>
-
-
-            </div>
-        </nav>
+            </nav>
 
 
 
@@ -146,20 +159,26 @@
                                         <div class="font-bold text-xl">
                                             <?php echo $wiki->title; ?>
                                         </div>
-                                        <div class="flex">
+                                        <div class="flex items-center space-x-4">
                                             <?php if ($wiki->author_id == $_SESSION['user_id']): ?>
                                                 <a href="<?php echo URLROOT; ?>/wikis/edit/<?php echo $wiki->wiki_id; ?>"
-                                                    class="text-blue-500 hover:text-blue-700 mr-2">
-                                                    <i class="fas fa-edit"></i> Modifier
+                                                    class="text-blue-500 hover:text-blue-700 border border-blue-500 hover:border-blue-700 px-3 py-1 rounded-full flex items-center transition duration-300">
+                                                    <i class="fas fa-edit mr-1"></i> Modifier
                                                 </a>
                                                 <form class="d-inline"
                                                     action="<?php echo URLROOT; ?>/wikis/delete/<?php echo $wiki->wiki_id; ?>"
                                                     method="post"
                                                     onsubmit="return confirm('Are you sure you want to delete this wiki?');">
-                                                    <button type="submit" class="mt-2 text-red-600">Supprimer</button>
+                                                    <button type="submit"
+                                                        class="mt-2 text-red-600 border border-red-600 hover:border-red-700 px-3 py-1 rounded-full flex items-center transition duration-300">
+                                                        <i class="fas fa-trash-alt mr-1"></i> Supprimer
+                                                    </button>
                                                 </form>
                                             <?php endif; ?>
+
+
                                         </div>
+
                                     </div>
                                     <p class="text-gray-700 text-base break-words">
                                         <?php echo (strlen($wiki->content) > 100) ? substr($wiki->content, 0, 50) . '...' : $wiki->content; ?>
@@ -197,7 +216,7 @@
 
 
 
-      
+
         </div>
 
         <!-- Ajoutez cette balise de script avant la fermeture du corps body -->
@@ -264,16 +283,16 @@
                                         </div>
                                         <div class="flex">
                                             <?php if ($wiki->author_id == $_SESSION['user_id']): ?>
-                                                <a href="<?php echo URLROOT; ?>/wikis/edit/<?php echo $wiki->wiki_id; ?>"
-                                                    class="text-blue-500 hover:text-blue-700 mr-2">
-                                                    <i class="fas fa-edit"></i> Modifier
-                                                </a>
-                                                <form class="d-inline"
-                                                    action="<?php echo URLROOT; ?>/wikis/delete/<?php echo $wiki->wiki_id; ?>"
-                                                    method="post"
-                                                    onsubmit="return confirm('Are you sure you want to delete this wiki?');">
-                                                    <button type="submit" class="mt-2 text-red-600">Supprimer</button>
-                                                </form>
+                                                    <a href="<?php echo URLROOT; ?>/wikis/edit/<?php echo $wiki->wiki_id; ?>"
+                                                        class="text-blue-500 hover:text-blue-700 mr-2">
+                                                        <i class="fas fa-edit"></i> Modifier
+                                                    </a>
+                                                    <form class="d-inline"
+                                                        action="<?php echo URLROOT; ?>/wikis/delete/<?php echo $wiki->wiki_id; ?>"
+                                                        method="post"
+                                                        onsubmit="return confirm('Are you sure you want to delete this wiki?');">
+                                                        <button type="submit" class="mt-2 text-red-600">Supprimer</button>
+                                                    </form>
                                             <?php endif; ?>
                                         </div>
                                     </div>
