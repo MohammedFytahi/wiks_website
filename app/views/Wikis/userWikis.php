@@ -19,7 +19,7 @@
 
 <body class="font-sans bg-gray-200">
 
-    <!-- Admin Dashboard Section -->
+
     <section class="flex h-screen">
 
     <aside class="w-1/4 bg-indigo-800 text-white p-8 hidden lg:block" style="position: fixed; top: 0; height: 100vh;">
@@ -36,7 +36,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">🏠</span>
                                 Home
                             </a>
@@ -44,7 +44,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/userWikis"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                              
                                 <span class="mr-2">📚</span>
                                 Mes wikis
                             </a>
@@ -52,14 +52,14 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/add"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <span class="mr-2">➕</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
+                                <span class="mr-2">➕</span> 
                                 Add wiki
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo URLROOT; ?>/users/logout"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <span class="mr-2">🚪</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
+                                <span class="mr-2">🚪</span> 
                                 Logout
                             </a>
                         </li>

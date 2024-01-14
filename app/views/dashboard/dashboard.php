@@ -37,7 +37,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/categories/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">📁</span>
                                 Manage Categories
                             </a>
@@ -45,7 +45,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/tags/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                            
                                 <span class="mr-2">🏷️</span>
                                 Manage Tags
                             </a>
@@ -53,14 +53,14 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/index1"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                             
                                 <span class="mr-2">📚</span>
                                 Manage Wikis
                             </a>
                         </li>
                         <li>
                             <a href="#" class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">📊</span>
                                 Dashboard Stats
                             </a>
@@ -68,7 +68,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/users/logout"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <span class="mr-2">🚪</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
+                                <span class="mr-2">🚪</span> 
                                 Logout
                             </a>
                         </li>
@@ -126,10 +126,9 @@
                         </div>
                     </div>
 
-                    <!-- Overview Cards Section -->
+                
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Total Entities Card -->
-                        <!-- ... (rest of your content) ... -->
+                      
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
@@ -166,7 +165,7 @@
 
                     <div class="mt-8">
                         <h3 class="text-2xl font-semibold mb-4 text-gray-800">Recent Activities</h3>
-                        <!-- Include a more interactive list or timeline of recent activities here -->
+                    
                         <div class="bg-white p-6 rounded-md shadow-md">
                             <ul class="space-y-4">
                                 <li>
@@ -177,7 +176,7 @@
                                     <p class="text-gray-600">Category 'Technology' reached 100 articles.</p>
                                     <span class="text-xs text-gray-400">1 day ago</span>
                                 </li>
-                                <!-- Add more list items as needed -->
+                               
                             </ul>
                         </div>
                     </div>

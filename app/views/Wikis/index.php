@@ -29,11 +29,11 @@
 
 
 
-        <!-- Admin Dashboard Section -->
+       
         <section class="">
 
 
-            <!-- Sidebar Section -->
+           
             <aside class="w-1/4 bg-indigo-800 text-white p-8 hidden lg:block"
                 style="position: fixed; top: 0; height: 100vh;">
                 <div class="flex justify-between items-center mb-8">
@@ -49,7 +49,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">🏠</span>
                                 Home
                             </a>
@@ -57,7 +57,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/userWikis"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                              
                                 <span class="mr-2">📚</span>
                                 Mes wikis
                             </a>
@@ -65,14 +65,14 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/add"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <span class="mr-2">➕</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
+                                <span class="mr-2">➕</span> 
                                 Add wiki
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo URLROOT; ?>/users/logout"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <span class="mr-2">🚪</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
+                                <span class="mr-2">🚪</span> 
                                 Logout
                             </a>
                         </li>
@@ -131,7 +131,6 @@
 
 
 
-            <!-- Dashboard Section -->
             <section class="container lg:ml-80 my-8 max-w-md:mx-auto overflow-x-hidden">
                 <div class="flex bg-gray-100 p-4 w-72 space-x-4 rounded-lg mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 opacity-30" fill="none" viewBox="0 0 24 24"
@@ -219,8 +218,6 @@
 
         </div>
 
-        <!-- Ajoutez cette balise de script avant la fermeture du corps body -->
-
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const searchInput = document.getElementById('searchInput');
@@ -229,32 +226,31 @@
                 searchInput.addEventListener('input', function () {
                     const searchTerm = searchInput.value.trim();
 
-                    // Check if the search term is empty
                     if (searchTerm === '') {
-                        // Clear the search results container
+                      
                         searchResultsContainer.innerHTML = '';
                         return;
                     }
 
-                    // Perform AJAX request
+              
                     const xhr = new XMLHttpRequest();
 
                     xhr.open('GET', `<?php echo URLROOT; ?>/Wikis/search?search=${searchTerm}`, true);
 
                     xhr.onload = function () {
                         if (xhr.status >= 200 && xhr.status < 400) {
-                            // Success! Handle the response and update the content
+                          
                             const response = JSON.parse(xhr.responseText);
-                            // Update the content based on the response
+                          
                             updateSearchResults(response);
                         } else {
-                            // Error handling
+                           
                             console.error('Request failed');
                         }
                     };
 
                     xhr.onerror = function () {
-                        // Network error
+                       
                         console.error('Network error');
                     };
 
@@ -262,16 +258,16 @@
                 });
 
                 function updateSearchResults(results) {
-                    // Clear previous results
+              
                     searchResultsContainer.innerHTML = '';
 
                     if (results.length > 0) {
-                        // Display the search results
+                       
                         results.forEach(result => {
                             const resultElement = document.createElement('div');
                             resultElement.classList.add('search-result');
 
-                            // Display result data (customize based on your data structure)
+                           
                             resultElement.innerHTML = `
                             <div class="max-w-sm rounded overflow-hidden shadow-lg ">
                                 <img class="w-full" src="https://v1.tailwindcss.com/img/card-top.jpg"
@@ -329,7 +325,7 @@
                             searchResultsContainer.appendChild(resultElement);
                         });
                     } else {
-                        // Display a message when no results are found
+                       
                         const noResultsMessage = document.createElement('p');
                         noResultsMessage.textContent = 'No results found.';
                         searchResultsContainer.appendChild(noResultsMessage);

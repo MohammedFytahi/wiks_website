@@ -39,20 +39,19 @@
     function validateForm() {
         var tagInput = document.getElementById('tag_name');
         var categorySelect = document.getElementById('category_id');
-        var tagErr = document.getElementById('tag_name_err'); // Fix the ID here
-        var categoryErr = document.getElementById('category_id_err'); // Keep the ID consistent
+        var tagErr = document.getElementById('tag_name_err'); 
+        var categoryErr = document.getElementById('category_id_err'); 
 
         // Reset previous errors
         tagErr.textContent = '';
         categoryErr.textContent = '';
 
-        // Validate tag name
+   
         if (tagInput.value.trim() === '') {
             tagErr.textContent = 'Please enter a name';
             return false;
         }
 
-        // Validate category
         if (categorySelect.value === '') {
             categoryErr.textContent = 'Please select a category';
             return false;

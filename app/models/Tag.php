@@ -66,7 +66,7 @@ class Tag
                 return false;
             }
         } catch (PDOException $e) {
-            // Output the specific error message for debugging
+          
             echo 'Error updating tag: ' . $e->getMessage();
             return false;
         }

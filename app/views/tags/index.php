@@ -20,10 +20,10 @@
         var tagNameInput = document.getElementById('tag_name');
         var tagNameErr = document.getElementById('tag_name_err');
 
-        // Reset previous errors
+       
         tagNameErr.textContent = '';
 
-        // Validate the tag name
+      
         if (tagNameInput.value.trim() === '') {
             tagNameErr.textContent = 'Please enter a tag name';
             return false;
@@ -39,11 +39,10 @@
 
     <body class="font-sans bg-gray-200">
 
-        <!-- Admin Dashboard Section -->
+
         <section class="flex h-screen">
 
-            <!-- Sidebar Section -->
-            <!-- Sidebar Section -->
+           
             <div class="lg:hidden">
                 <button id="burgerBtn" class="text-white">
                     <i class="fa fa-bars"></i>
@@ -62,7 +61,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/categories/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                              
                                 <span class="mr-2">📁</span>
                                 Manage Categories
                             </a>
@@ -70,7 +69,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/tags/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">🏷️</span>
                                 Manage Tags
                             </a>
@@ -78,7 +77,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/index1"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">📚</span>
                                 Manage Wikis
                             </a>
@@ -86,7 +85,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/index"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">📊</span>
                                 Dashboard Stats
                             </a>
@@ -95,7 +94,7 @@
 
                             <a href="<?php echo URLROOT; ?>/tags/add"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <span class="mr-2">➕</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
+                                <span class="mr-2">➕</span> 
                                 Add Tag
                             </a>
                             </div>
@@ -103,7 +102,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/users/logout"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <span class="mr-2">🚪</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
+                                <span class="mr-2">🚪</span> 
                                 Logout
                             </a>
                         </li>
@@ -196,7 +195,7 @@
                                 </button>
                                 <div id="dropdown"
                                     class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                    <!-- ... (votre code de menu déroulant) ... -->
+                                    
                                 </div>
                             </div>
                             <div class="flex flex-col items-center pb-10">

@@ -1,9 +1,40 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
+
+
+
+    <title>
+        <?php echo SITENAME; ?>
+    </title>
+</head>
+
+
+
+
+
+    <body>
+
+    
 <?php flash('wiki_message'); ?>
 
 <div class="flex items-center justify-center my-8">
     <h1 class="text-2xl font-extrabold text-blue-500">Create a New Wiki</h1>
-</div>
+</div><a href="<?php echo URLROOT; ?>/wikis/index2" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10">
+        <i class="fa fa-backward mr-2"></i> Back
+    </a>
 
 <form action="<?php echo URLROOT; ?>/wikis/add" method="post" class="max-w-md mx-auto mb-10 bg-white p-8 rounded-lg shadow-md" onsubmit="return validateForm(event)">
 
@@ -99,41 +130,41 @@
         var categoryErr = document.querySelector('#category_err');
         var tagsErr = document.querySelector('#tags_err');
 
-        // Réinitialisez les erreurs précédentes
+       
         titleErr.textContent = '';
         contentErr.textContent = '';
         categoryErr.textContent = '';
         tagsErr.textContent = '';
 
-        // Validez le titre
+       
         if (titleInput.value.trim() === '') {
             titleErr.textContent = 'Le titre est requis';
-            event.preventDefault(); // Empêche la soumission du formulaire
+            event.preventDefault(); 
             return false;
         }
 
-        // Validez le contenu
+       
         if (contentInput.value.trim() === '') {
             contentErr.textContent = 'Le contenu est requis';
-            event.preventDefault(); // Empêche la soumission du formulaire
+            event.preventDefault(); 
             return false;
         }
 
-        // Validez la catégorie
+       
         if (categorySelect.value === '') {
             categoryErr.textContent = 'La catégorie est requise';
-            event.preventDefault(); // Empêche la soumission du formulaire
+            event.preventDefault(); 
             return false;
         }
 
-        // Validez les tags
+      
         if (tagsInput.value === '[]') {
             tagsErr.textContent = 'Au moins un tag est requis';
-            event.preventDefault(); // Empêche la soumission du formulaire
+            event.preventDefault(); 
             return false;
         }
 
-        return true; // Autorise la soumission du formulaire
+        return true; 
     }
 </script>
 

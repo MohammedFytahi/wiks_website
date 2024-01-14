@@ -21,33 +21,7 @@ class Wiki
         return $this->db->resultSet();
     }
 
-    // public function addWiki($data) {
-    //     // Insertion dans la table des wikis
-    //     $this->db->query('INSERT INTO wikis (title, content, category_id) VALUES (:title, :content, :category_id)');
-    //     // Liaison des valeurs
-    //     $this->db->bind(':title', $data['title']);
-    //     $this->db->bind(':content', $data['content']);
-    //     $this->db->bind(':category_id', $data['category_id']);
-    //     // Exécution de la requête
-    //     if ($this->db->execute()) {
-    //         $wiki_id = $this->db->lastInsertId();
-
-    //         // Ajout des tags associés au wiki dans la table de liaison (wiki_tags)
-    //         // var_dump($data);
-    //         foreach ($data['tags'] as $tag_id) {
-    //             $this->db->query('INSERT INTO wikitags (wiki_id, tag_id) VALUES (:wiki_id, :tag_id)');
-    //             $this->db->bind(':wiki_id', $wiki_id);
-    //             $this->db->bind(':tag_id', $tag_id);
-    //             $this->db->execute();
-    //         }
-
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
-    // ...
+ 
 
     public function addWiki($data)
     {
@@ -153,14 +127,7 @@ class Wiki
         return $this->db->resultSet();
     }
 
-    // public function getTotalWikisCount()
-    // {
-    //     $this->db->query('SELECT COUNT(*) AS totalWikis FROM wikis');
-    //     $row = $this->db->single();
-    //     return $row->totalWikis;
-    // }
-
-    // models/Wiki.php
+  
     public function getTagsByCategory($categoryId)
     {
         $this->db->query('SELECT * FROM tags WHERE category_id = :category_id');
@@ -180,12 +147,12 @@ class Wiki
 
     public function deleteWiki($id)
     {
-        // First, delete the associated tags
+       
         $this->db->query('DELETE FROM wikitags WHERE wiki_id = :id');
         $this->db->bind(':id', $id);
         $this->db->execute();
 
-        // Then, delete the wiki
+       
         $this->db->query('DELETE FROM wikis WHERE wiki_id = :id');
         $this->db->bind(':id', $id);
 
@@ -246,7 +213,7 @@ public function searchWikis($searchTerm)
         return $this->db->resultSet();
     }
 
-    // In your Wiki model (Wiki.php)
+   
 public function getLastWikiAuthor()
 {
     $this->db->query('SELECT users.username FROM wikis

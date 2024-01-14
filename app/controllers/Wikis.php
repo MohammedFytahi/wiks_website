@@ -128,7 +128,8 @@ class Wikis extends Controller
                 $content_err = 'Le contenu est requis';
             }
 
-            // Validate category_id (you may want to perform further validation if needed)
+            
+            
             if (empty($category_id)) {
                 $category_err = 'La catégorie est requise';
             }
@@ -139,9 +140,9 @@ class Wikis extends Controller
                 $tags_err = 'Au moins un tag est requis';
             }
 
-            // Check if any error messages are set
+           
             if (empty($title_err) && empty($content_err) && empty($category_err) && empty($tags_err)) {
-                // Process form data if validation passes
+               
                 $data = [
                     'title' => $title,
                     'content' => $content,
@@ -173,7 +174,7 @@ class Wikis extends Controller
             }
         }
 
-        // Load the view with the necessary data (including the list of tags and error messages)
+       
         $wikis = $this->wikiModel->getWikis();
 
         // Initialize CategoryModel before using it
@@ -190,7 +191,7 @@ class Wikis extends Controller
 
         $data = [
             'categories' => $categories,
-            'tagsList' => $this->wikiModel->getTags(), // Assuming you want to get tags from wikiModel
+            'tagsList' => $this->wikiModel->getTags(), 
             'categoryTags' => $categoryTags,
             'wikis' => $wikis,
         ];
@@ -272,7 +273,7 @@ class Wikis extends Controller
 
     public function getTagsByCategory($categoryId)
     {
-        // Load model
+       
         $this->wikiModel = $this->model('Wiki');
 
         // Get tags associated with the selected category

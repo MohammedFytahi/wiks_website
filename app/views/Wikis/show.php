@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+
 
 <?php if ($_SESSION['user_role'] == 'user'): ?>
     <a href="<?php echo URLROOT; ?>/wikis/index2" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10">

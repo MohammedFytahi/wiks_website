@@ -1,4 +1,4 @@
-<!-- views/wikis/edit.php -->
+
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <a href="<?php echo URLROOT; ?>/wikis/index2" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10">
         <i class="fa fa-backward mr-2"></i> Back

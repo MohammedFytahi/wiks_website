@@ -27,11 +27,10 @@
 
     <body class="font-sans bg-gray-200">
 
-        <!-- Admin Dashboard Section -->
+
         <section class="flex h-screen">
 
-            <!-- Sidebar Section -->
-            <!-- Sidebar Section -->
+
             <aside class="w-1/4 bg-indigo-800 text-white p-8 hidden lg:block" style="position: fixed; top: 0; height: 100vh;">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-4xl font-extrabold text-gray-800">
@@ -44,7 +43,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/categories/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                             
                                 <span class="mr-2">📁</span>
                                 Manage Categories
                             </a>
@@ -52,7 +51,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/tags/index2"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">🏷️</span>
                                 Manage Tags
                             </a>
@@ -60,14 +59,14 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/index1"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                               
                                 <span class="mr-2">📚</span>
                                 Manage Wikis
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo URLROOT; ?>/wikis/index" class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <!-- Utilisation de couleurs Tailwind -->
+                                
                                 <span class="mr-2">📊</span>
                                 Dashboard Stats
                             </a>
@@ -75,7 +74,7 @@
                         <li>
                             <a href="<?php echo URLROOT; ?>/users/logout"
                                 class="flex items-center text-lg py-2 px-4 rounded hover:bg-indigo-700">
-                                <span class="mr-2">🚪</span> <!-- Icône de porte ouverte, vous pouvez changer cela -->
+                                <span class="mr-2">🚪</span> 
                                 Logout
                             </a>
                         </li>
@@ -123,7 +122,7 @@
           
 
                
-                <!-- Dashboard Section -->
+               
                 <section class="container lg:ml-80 my-8 max-w-md:mx-auto overflow-x-hidden">
                <?php flash('wiki_message');?>
 
