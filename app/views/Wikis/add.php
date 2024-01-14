@@ -1,38 +1,38 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php flash('wiki_message');?>
+<?php flash('wiki_message'); ?>
 
 <div class="flex items-center justify-center my-8">
     <h1 class="text-2xl font-extrabold text-blue-500">Create a New Wiki</h1>
 </div>
 
-<form action="<?php echo URLROOT; ?>/wikis/add" method="post" class="max-w-md mx-auto mb-10 bg-white p-8 rounded-lg shadow-md">
+<form action="<?php echo URLROOT; ?>/wikis/add" method="post" class="max-w-md mx-auto mb-10 bg-white p-8 rounded-lg shadow-md" onsubmit="return validateForm(event)">
 
     <div class="mb-6">
         <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">Title</label>
-        <input type="text" name="title" class="form-input w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500">
-        <?php echo flash('title_err'); ?>
+        <input type="text" name="title" class="form-input w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500" required>
+        <span class="text-red-500 text-xs"> <?php echo flash('title_err'); ?></span>
     </div>
 
     <div class="mb-6">
         <label for="content" class="block text-sm font-semibold text-gray-700 mb-2">Content</label>
-        <textarea name="content" class="form-input w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500"></textarea>
-        <?php echo flash('content_err'); ?>
+        <textarea name="content" class="form-input w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500" required></textarea>
+        <span class="text-red-500 text-xs"><?php echo flash('content_err'); ?></span>
     </div>
-  
+
     <div class="mb-6">
         <label for="category" class="block text-sm font-semibold text-gray-700 mb-2">Category</label>
-        <select name="category_id" id="categoryId" class="form-select w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500">
+        <select name="category_id" id="categoryId" class="form-select w-full px-4 py-2 border rounded-md focus:outline-none focus:border-purple-500" required>
             <?php foreach ($data['categories'] as $category): ?>
                 <option value="<?php echo $category->category_id; ?>"><?php echo $category->category_name; ?></option>
             <?php endforeach; ?>
         </select>
-        <?php echo flash('category_err'); ?>
+        <span class="text-red-500 text-xs"><?php echo flash('category_err'); ?></span>
     </div>
 
     <div class="mb-3">
         <label for="selectedTagsInput" class="block text-sm font-semibold text-gray-700 mb-2">Tags</label>
-        <input type="hidden" id="selectedTagsInput" name="selectedTagsInput" class="form-input">
-        <?php echo flash('tags_err'); ?>
+        <input type="hidden" id="selectedTagsInput" name="selectedTagsInput" class="form-input" required>
+        <span class="text-red-500 text-xs"><?php echo flash('tags_err'); ?></span>
 
         <div id="tagsContainer" class="flex flex-wrap gap-2"></div>
     </div>
@@ -42,7 +42,6 @@
     </div>
 
 </form>
-
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -90,10 +89,51 @@
         });
     });
 
-    function ToDetailWiki(element) {
-        var wikiId = element.getAttribute('data-wiki-id');
-        var wikiUrl = "<?php echo URLROOT . '/WikiController/singleWiki/'; ?>" + wikiId;
-        window.location.href = wikiUrl;
+    function validateForm(event) {
+        var titleInput = document.querySelector('input[name="title"]');
+        var contentInput = document.querySelector('textarea[name="content"]');
+        var categorySelect = document.getElementById('categoryId');
+        var tagsInput = document.getElementById('selectedTagsInput');
+        var titleErr = document.querySelector('#title_err');
+        var contentErr = document.querySelector('#content_err');
+        var categoryErr = document.querySelector('#category_err');
+        var tagsErr = document.querySelector('#tags_err');
+
+        // Réinitialisez les erreurs précédentes
+        titleErr.textContent = '';
+        contentErr.textContent = '';
+        categoryErr.textContent = '';
+        tagsErr.textContent = '';
+
+        // Validez le titre
+        if (titleInput.value.trim() === '') {
+            titleErr.textContent = 'Le titre est requis';
+            event.preventDefault(); // Empêche la soumission du formulaire
+            return false;
+        }
+
+        // Validez le contenu
+        if (contentInput.value.trim() === '') {
+            contentErr.textContent = 'Le contenu est requis';
+            event.preventDefault(); // Empêche la soumission du formulaire
+            return false;
+        }
+
+        // Validez la catégorie
+        if (categorySelect.value === '') {
+            categoryErr.textContent = 'La catégorie est requise';
+            event.preventDefault(); // Empêche la soumission du formulaire
+            return false;
+        }
+
+        // Validez les tags
+        if (tagsInput.value === '[]') {
+            tagsErr.textContent = 'Au moins un tag est requis';
+            event.preventDefault(); // Empêche la soumission du formulaire
+            return false;
+        }
+
+        return true; // Autorise la soumission du formulaire
     }
 </script>
 

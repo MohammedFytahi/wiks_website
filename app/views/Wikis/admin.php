@@ -166,6 +166,12 @@
                                     <span
                                         class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
                                 </div>
+                                <div class="px-6 pt-4 pb-2">
+                                    <a href="<?php echo URLROOT; ?>/wikis/show/<?php echo $wiki->wiki_id; ?>"
+                                        class="inline-block bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700">
+                                        Read More
+                                    </a>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>

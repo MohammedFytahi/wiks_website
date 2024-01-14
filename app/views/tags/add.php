@@ -11,8 +11,11 @@
             <input type="text" name="tag_name" id="tag_name" class="w-full p-2 border rounded-md <?php echo (!empty($data['title_err'])) ? 'border-red-500' : ''; ?>" value="<?php echo $data['tag_name']; ?>">
 
             <?php if (!empty($data['title_err'])) : ?>
-                <p class="text-red-500 text-xs italic" id="title_err"><?php echo $data['title_err']; ?></p>
-            <?php endif; ?>
+    <span class="text-red-500" id="tag_name_err">
+        <?php echo $data['title_err']; ?>
+    </span>
+    <?php endif; ?>
+
         </div>
 
         <div class="mb-4">
@@ -36,8 +39,8 @@
     function validateForm() {
         var tagInput = document.getElementById('tag_name');
         var categorySelect = document.getElementById('category_id');
-        var tagErr = document.getElementById('title_err');
-        var categoryErr = document.getElementById('category_id_err');
+        var tagErr = document.getElementById('tag_name_err'); // Fix the ID here
+        var categoryErr = document.getElementById('category_id_err'); // Keep the ID consistent
 
         // Reset previous errors
         tagErr.textContent = '';
@@ -58,5 +61,6 @@
         return true;
     }
 </script>
+
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
